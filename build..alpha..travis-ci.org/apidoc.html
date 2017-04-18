@@ -1,0 +1,412 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://llllll.li/randomColor/"
+
+    >randomcolor (v0.4.4)</a>
+</h1>
+<h4>For generating attractive random colors</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.randomcolor">module randomcolor</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.randomcolor">
+            function <span class="apidocSignatureSpan"></span>randomcolor
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.randomColor">
+            function <span class="apidocSignatureSpan">randomcolor.</span>randomColor
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.toString">
+            function <span class="apidocSignatureSpan">randomcolor.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.randomcolor.randomColor">module randomcolor.randomColor</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.randomColor.randomColor">
+            function <span class="apidocSignatureSpan">randomcolor.</span>randomColor
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.randomcolor.toString">module randomcolor.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.toString.toString">
+            function <span class="apidocSignatureSpan">randomcolor.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.randomcolor" id="apidoc.module.randomcolor">module randomcolor</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.randomcolor.randomcolor" id="apidoc.element.randomcolor.randomcolor">
+        function <span class="apidocSignatureSpan"></span>randomcolor
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">randomcolor = function (options) {
+
+  options = options || {};
+
+  // Check if there is a seed and ensure it&#x27;s an
+  // integer. Otherwise, reset the seed value.
+  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+    seed = options.seed;
+
+  // A string was passed as a seed
+  } else if (typeof options.seed === &#x27;string&#x27;) {
+    seed = stringToInteger(options.seed);
+
+  // Something was passed as a seed but it wasn&#x27;t an integer or string
+  } else if (options.seed !== undefined &#x26;&#x26; options.seed !== null) {
+    throw new TypeError(&#x27;The seed value must be an integer or string&#x27;);
+
+  // No seed, reset the value outside.
+  } else {
+    seed = null;
+  }
+
+  var H,S,B;
+
+  // Check if we need to generate multiple colors
+  if (options.count !== null &#x26;&#x26; options.count !== undefined) {
+
+    var totalColors = options.count,
+        colors = [];
+
+    options.count = null;
+
+    while (totalColors &#x3e; colors.length) {
+
+      // Since we&#x27;re generating multiple colors,
+      // incremement the seed. Otherwise we&#x27;d just
+      // generate the same color each time...
+      if (seed &#x26;&#x26; options.seed) options.seed += 1;
+
+      colors.push(randomColor(options));
+    }
+
+    options.count = totalColors;
+
+    return colors;
+  }
+
+  // First we pick a hue (H)
+  H = pickHue(options);
+
+  // Then use H to determine saturation (S)
+  S = pickSaturation(H, options);
+
+  // Then use S and H to determine brightness (B).
+  B = pickBrightness(H, S, options);
+
+  // Then we return the HSB color in the desired format
+  return setFormat([H,S,B], options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.randomcolor.randomColor" id="apidoc.element.randomcolor.randomColor">
+        function <span class="apidocSignatureSpan">randomcolor.</span>randomColor
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">randomColor = function (options) {
+
+  options = options || {};
+
+  // Check if there is a seed and ensure it&#x27;s an
+  // integer. Otherwise, reset the seed value.
+  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+    seed = options.seed;
+
+  // A string was passed as a seed
+  } else if (typeof options.seed === &#x27;string&#x27;) {
+    seed = stringToInteger(options.seed);
+
+  // Something was passed as a seed but it wasn&#x27;t an integer or string
+  } else if (options.seed !== undefined &#x26;&#x26; options.seed !== null) {
+    throw new TypeError(&#x27;The seed value must be an integer or string&#x27;);
+
+  // No seed, reset the value outside.
+  } else {
+    seed = null;
+  }
+
+  var H,S,B;
+
+  // Check if we need to generate multiple colors
+  if (options.count !== null &#x26;&#x26; options.count !== undefined) {
+
+    var totalColors = options.count,
+        colors = [];
+
+    options.count = null;
+
+    while (totalColors &#x3e; colors.length) {
+
+      // Since we&#x27;re generating multiple colors,
+      // incremement the seed. Otherwise we&#x27;d just
+      // generate the same color each time...
+      if (seed &#x26;&#x26; options.seed) options.seed += 1;
+
+      colors.push(randomColor(options));
+    }
+
+    options.count = totalColors;
+
+    return colors;
+  }
+
+  // First we pick a hue (H)
+  H = pickHue(options);
+
+  // Then use H to determine saturation (S)
+  S = pickSaturation(H, options);
+
+  // Then use S and H to determine brightness (B).
+  B = pickBrightness(H, S, options);
+
+  // Then we return the HSB color in the desired format
+  return setFormat([H,S,B], options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.randomcolor.toString" id="apidoc.element.randomcolor.toString">
+        function <span class="apidocSignatureSpan">randomcolor.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  function HSVtoHex (hsv){
+
+var rgb = HSVtoRGB(hsv);
+
+function componentToHex(c) {
+    var hex = c.<span class="apidocCodeKeywordSpan">toString</span>(16);
+    return hex.length == 1 ? &#x27;0&#x27; + hex : hex;
+}
+
+var hex = &#x27;#&#x27; + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
+
+return hex;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.randomcolor.randomColor" id="apidoc.module.randomcolor.randomColor">module randomcolor.randomColor</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.randomcolor.randomColor.randomColor" id="apidoc.element.randomcolor.randomColor.randomColor">
+        function <span class="apidocSignatureSpan">randomcolor.</span>randomColor
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">randomColor = function (options) {
+
+  options = options || {};
+
+  // Check if there is a seed and ensure it&#x27;s an
+  // integer. Otherwise, reset the seed value.
+  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+    seed = options.seed;
+
+  // A string was passed as a seed
+  } else if (typeof options.seed === &#x27;string&#x27;) {
+    seed = stringToInteger(options.seed);
+
+  // Something was passed as a seed but it wasn&#x27;t an integer or string
+  } else if (options.seed !== undefined &#x26;&#x26; options.seed !== null) {
+    throw new TypeError(&#x27;The seed value must be an integer or string&#x27;);
+
+  // No seed, reset the value outside.
+  } else {
+    seed = null;
+  }
+
+  var H,S,B;
+
+  // Check if we need to generate multiple colors
+  if (options.count !== null &#x26;&#x26; options.count !== undefined) {
+
+    var totalColors = options.count,
+        colors = [];
+
+    options.count = null;
+
+    while (totalColors &#x3e; colors.length) {
+
+      // Since we&#x27;re generating multiple colors,
+      // incremement the seed. Otherwise we&#x27;d just
+      // generate the same color each time...
+      if (seed &#x26;&#x26; options.seed) options.seed += 1;
+
+      colors.push(randomColor(options));
+    }
+
+    options.count = totalColors;
+
+    return colors;
+  }
+
+  // First we pick a hue (H)
+  H = pickHue(options);
+
+  // Then use H to determine saturation (S)
+  S = pickSaturation(H, options);
+
+  // Then use S and H to determine brightness (B).
+  B = pickBrightness(H, S, options);
+
+  // Then we return the HSB color in the desired format
+  return setFormat([H,S,B], options);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.randomcolor.toString" id="apidoc.module.randomcolor.toString">module randomcolor.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.randomcolor.toString.toString" id="apidoc.element.randomcolor.toString.toString">
+        function <span class="apidocSignatureSpan">randomcolor.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+
+  function HSVtoHex (hsv){
+
+var rgb = HSVtoRGB(hsv);
+
+function componentToHex(c) {
+    var hex = c.<span class="apidocCodeKeywordSpan">toString</span>(16);
+    return hex.length == 1 ? &#x27;0&#x27; + hex : hex;
+}
+
+var hex = &#x27;#&#x27; + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
+
+return hex;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
