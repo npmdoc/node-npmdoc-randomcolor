@@ -1,6 +1,6 @@
 # npmdoc-randomcolor
 
-#### api documentation for  [randomcolor (v0.4.4)](http://llllll.li/randomColor/)  [![npm package](https://img.shields.io/npm/v/npmdoc-randomcolor.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-randomcolor) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-randomcolor.svg)](https://travis-ci.org/npmdoc/node-npmdoc-randomcolor)
+#### api documentation for  [randomcolor (v0.5.0)](http://llllll.li/randomColor/)  [![npm package](https://img.shields.io/npm/v/npmdoc-randomcolor.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-randomcolor) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-randomcolor.svg)](https://travis-ci.org/npmdoc/node-npmdoc-randomcolor)
 
 #### For generating attractive random colors
 
@@ -39,9 +39,10 @@
         "test": "tests"
     },
     "dist": {
-        "shasum": "5ff56862e97ba03beb0419ff0536ec7aff59eeeb",
-        "tarball": "https://registry.npmjs.org/randomcolor/-/randomcolor-0.4.4.tgz"
+        "shasum": "1a7dde4b853a178ba34d4e4d0fc7392b8ec72e3c",
+        "tarball": "https://registry.npmjs.org/randomcolor/-/randomcolor-0.5.0.tgz"
     },
+    "gitHead": "2307a86f8c6a53446621b2b52c116eb6d79e9b86",
     "homepage": "http://llllll.li/randomColor/",
     "keywords": [
         "attractive",
@@ -49,7 +50,7 @@
         "color",
         "generator"
     ],
-    "license": "MIT",
+    "license": "CC0",
     "main": "randomColor.js",
     "maintainers": [
         {
@@ -68,7 +69,7 @@
     "spm": {
         "main": "randomColor.js"
     },
-    "version": "0.4.4"
+    "version": "0.5.0"
 }
 ```
 
