@@ -51,7 +51,7 @@
 
         href="http://llllll.li/randomColor/"
 
-    >randomcolor (v0.4.4)</a>
+    >randomcolor (v0.5.0)</a>
 </h1>
 <h4>For generating attractive random colors</h4>
 <div class="apidocSectionDiv"><a
@@ -79,15 +79,6 @@
 
         </li>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.toString">
-            function <span class="apidocSignatureSpan">randomcolor.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.randomcolor.randomColor">module randomcolor.randomColor</a><ol>
@@ -97,19 +88,6 @@
             <a class="apidocElementLiA" href="#apidoc.element.randomcolor.randomColor.randomColor">
             function <span class="apidocSignatureSpan">randomcolor.</span>randomColor
             <span class="apidocSignatureSpan">(options)</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.randomcolor.toString">module randomcolor.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.randomcolor.toString.toString">
-            function <span class="apidocSignatureSpan">randomcolor.</span>toString
-            <span class="apidocSignatureSpan">()</span>
             </a>
 
         </li>
@@ -135,7 +113,7 @@
 
   // Check if there is a seed and ensure it&#x27;s an
   // integer. Otherwise, reset the seed value.
-  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+  if (options.seed !== undefined &#x26;&#x26; options.seed !== null &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
     seed = options.seed;
 
   // A string was passed as a seed
@@ -206,7 +184,7 @@
 
   // Check if there is a seed and ensure it&#x27;s an
   // integer. Otherwise, reset the seed value.
-  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+  if (options.seed !== undefined &#x26;&#x26; options.seed !== null &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
     seed = options.seed;
 
   // A string was passed as a seed
@@ -260,36 +238,6 @@
   return setFormat([H,S,B], options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.randomcolor.toString" id="apidoc.element.randomcolor.toString">
-        function <span class="apidocSignatureSpan">randomcolor.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-  }
-
-  function HSVtoHex (hsv){
-
-var rgb = HSVtoRGB(hsv);
-
-function componentToHex(c) {
-    var hex = c.<span class="apidocCodeKeywordSpan">toString</span>(16);
-    return hex.length == 1 ? &#x27;0&#x27; + hex : hex;
-}
-
-var hex = &#x27;#&#x27; + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
-
-return hex;
-...</pre></li>
     </ul>
 
 
@@ -312,7 +260,7 @@ return hex;
 
   // Check if there is a seed and ensure it&#x27;s an
   // integer. Otherwise, reset the seed value.
-  if (options.seed &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
+  if (options.seed !== undefined &#x26;&#x26; options.seed !== null &#x26;&#x26; options.seed === parseInt(options.seed, 10)) {
     seed = options.seed;
 
   // A string was passed as a seed
@@ -366,39 +314,6 @@ return hex;
   return setFormat([H,S,B], options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.randomcolor.toString" id="apidoc.module.randomcolor.toString">module randomcolor.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.randomcolor.toString.toString" id="apidoc.element.randomcolor.toString.toString">
-        function <span class="apidocSignatureSpan">randomcolor.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-  }
-
-  function HSVtoHex (hsv){
-
-var rgb = HSVtoRGB(hsv);
-
-function componentToHex(c) {
-    var hex = c.<span class="apidocCodeKeywordSpan">toString</span>(16);
-    return hex.length == 1 ? &#x27;0&#x27; + hex : hex;
-}
-
-var hex = &#x27;#&#x27; + componentToHex(rgb[0]) + componentToHex(rgb[1]) + componentToHex(rgb[2]);
-
-return hex;
-...</pre></li>
     </ul>
 
 
